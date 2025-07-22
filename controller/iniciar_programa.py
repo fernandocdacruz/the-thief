@@ -1,3 +1,6 @@
+from controller.cadastrar_moeda_cripto import cadastrar_moeda_cripto
+
+
 def iniciar_programa():
     op_menu = -1
     while op_menu != 0:
@@ -7,7 +10,7 @@ def iniciar_programa():
 
 def menu():
     print("\n[0] - Sair")
-    print("[1] - Teste ")
+    print("[1] - Cadastrar nova moeda cripto ")
 
 def obter_op_menu():
     while True:
@@ -27,5 +30,5 @@ def validar_op(op):
 
 def executar_op(op: int):
     if op == 1:
-        print("Teste")
+        cadastrar_moeda_cripto()
 
