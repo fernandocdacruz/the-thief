@@ -1,7 +1,7 @@
 import mysql.connector
 from model.entities.moeda_cripto import MoedaCripto
 
-class UsuarioCriptoDao:
+class MoedaCriptoDao:
 
     def __init__(self, connection):
         self.conn = connection
@@ -16,6 +16,15 @@ class UsuarioCriptoDao:
                 moeda = MoedaCripto(id=row[0], nome=row[1], sigla=row[2])
                 moedas.append(moeda)
             return moedas
+
+    def achar_moeda_id(self, id):
+        sql = "SELECT * FROM moedas WHERE id = %s"
+        with self.conn.cursor() as cursor:
+            cursor.execute(sql, (id,))
+            row = cursor.fetchone()
+            if row:
+                return MoedaCripto(id=row[0], nome=row[1], sigla=row[2])
+            return None
 
     def adicionar_moeda(self, nome, sigla):
         sql = "INSERT INTO moedas (nome, sigla) VALUES (%s, %s)"

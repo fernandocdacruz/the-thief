@@ -1,9 +1,24 @@
 -- Cotação Dolar
-CREATE TABLE cotacao_dolar(
+CREATE TABLE cotacao_dolar (
     id INT AUTO_INCREMENT PRIMARY KEY,
     valor DECIMAL(10,2) NOT NULL,
-    data_cotacao DATE DEFAULT (CURRENT_DATE)
+    data_cotacao DATE
 );
+
+DELIMITER //
+
+CREATE TRIGGER before_insert_cotacao_dolar
+BEFORE INSERT ON cotacao_dolar
+FOR EACH ROW
+BEGIN
+  IF NEW.data_cotacao IS NULL THEN
+    SET NEW.data_cotacao = CURDATE();
+  END IF;
+END;
+//
+
+DELIMITER ;
+
 
 -- Posicao
 CREATE TABLE posicao (

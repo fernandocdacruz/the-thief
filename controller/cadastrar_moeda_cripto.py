@@ -36,7 +36,7 @@ def escolher_menu_op():
 def executar_menu_op(menu_op, dao):
     if menu_op == 1:
         cadastrar(dao)
-    else:
+    elif menu_op == 2:
         excluir(dao)
 
 def cadastrar(dao):

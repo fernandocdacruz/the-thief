@@ -8,7 +8,7 @@ def realizar_login():
         return 0
     else:
         usuario_dao = DaoFactory.create_usuario_dao()
-        login = obter_string("LOGIN: ")
+        login = obter_string("\nLOGIN: ")
         usuario = usuario_dao.achar_pelo_login(login)
         if usuario == None:
             print("\nUsuário inválido")
