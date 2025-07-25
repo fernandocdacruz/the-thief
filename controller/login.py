@@ -1,4 +1,4 @@
-from controller.iniciar_programa import iniciar_programa
+from controller.menu_controller import iniciar_programa
 from model.dao.dao_factory import DaoFactory
 from model.dao.usuario_dao import UsuarioDao
 from db.connection_factory import DB

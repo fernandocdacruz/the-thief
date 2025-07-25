@@ -108,4 +108,7 @@ JOIN carteira c ON p.carteira_id = c.id
 JOIN usuario u ON c.usuario_id = u.id
 JOIN moedas m ON p.moeda_investida = m.id;
 
+ALTER TABLE cotacao_moedas
+MODIFY COLUMN valor DECIMAL(10,2) NOT NULL;
+
 
