@@ -1,3 +1,5 @@
+
+
 -- Cotação Dolar
 CREATE TABLE cotacao_dolar (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -110,5 +112,8 @@ JOIN moedas m ON p.moeda_investida = m.id;
 
 ALTER TABLE cotacao_moedas
 MODIFY COLUMN valor DECIMAL(10,2) NOT NULL;
+
+ALTER TABLE posicao
+MODIFY status ENUM('Aberta', 'Encerrada') DEFAULT 'Aberta';
 
 
