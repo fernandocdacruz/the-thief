@@ -1,33 +1,9 @@
-
-
--- Cotação Dolar
-CREATE TABLE cotacao_dolar (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    valor DECIMAL(10,2) NOT NULL,
-    data_cotacao DATE
-);
-
-DELIMITER //
-
-CREATE TRIGGER before_insert_cotacao_dolar
-BEFORE INSERT ON cotacao_dolar
-FOR EACH ROW
-BEGIN
-  IF NEW.data_cotacao IS NULL THEN
-    SET NEW.data_cotacao = CURDATE();
-  END IF;
-END;
-//
-
-DELIMITER ;
-
-
 -- Posicao
 CREATE TABLE posicao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     carteira_id INT NOT NULL,
     abertura DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status ENUM('Aberta', 'Encerrada'),
+    status ENUM('Aberta', 'Encerrada') DEFAULT 'Aberta',
     encerramento DATETIME,
     compra_dolar DECIMAL(10,2) NOT NULL,
     moeda_investida INT NOT NULL,
@@ -35,16 +11,6 @@ CREATE TABLE posicao (
     FOREIGN KEY (carteira_id) REFERENCES carteira(id),
     FOREIGN KEY (moeda_investida) REFERENCES moedas(id)
 );
-
--- Cotaçao moedas
-CREATE TABLE cotacao_moedas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    moeda_id INT NOT NULL,
-    valor DECIMAL(20,10) NOT NULL,
-    datahora_cotacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (moeda_id) REFERENCES moedas(id)
-);
-
 
 -- Moedas
 CREATE TABLE moedas (

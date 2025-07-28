@@ -1,5 +1,5 @@
 import random
-from controller.login import realizar_login
+from controller.login_controller import realizar_login
 from frases_motivacionais import frases
 
 print("\nBem vindo ao The Thief !\n")

@@ -1,6 +1,5 @@
-from controller.atualizar_cotacao_cripto import atualizar_cotacao_cripto
-from controller.atualizar_cotacao_dolar import atualizar_cotacao_dolar
-from controller.cadastrar_moeda_cripto import cadastrar_moeda_cripto
+from controller.cadastrar_moeda_cripto_controller import cadastrar_moeda_cripto
+from controller.criar_posicao_controller import criar_posicao
 import requests
 
 def iniciar_programa():
@@ -19,9 +18,7 @@ def iniciar_programa():
 def menu():
     print("\n[0] - Sair")
     print("[1] - Cadastrar nova moeda cripto ")
-    print("[2] - Atualizar cotação do dolar")
-    print("[3] - Atualizar cotação moeda cripto")
-    print("[4] - ")
+    print("[2] - Criar posição")
 
 def obter_op_menu():
     while True:
@@ -43,9 +40,7 @@ def executar_op(op: int):
     if op == 1:
         cadastrar_moeda_cripto()
     elif op == 2:
-        atualizar_cotacao_dolar()
-    elif op == 3:
-        atualizar_cotacao_cripto()
+        criar_posicao()
 
 def buscar_cotacao_usd_brl():
     url = "https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=brl"
