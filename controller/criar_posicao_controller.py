@@ -1,3 +1,4 @@
+from model.dao import posicao_dao
 from model.dao import moeda_cripto_dao
 from model.dao.dao_factory import DaoFactory
 
@@ -30,6 +31,36 @@ def executar_menu_op(menu_op: int, dao):
 def criar(dao):
     mostrar_moedas_cadastradas(dao)
     valor_compra_dolar = obter_valor_compra_dolar()
+    moeda = obter_moeda(dao)
+    valor_compra_moeda = obter_valor_compra_moeda()
+    carteira_id = 1
+    posicao_dao = DaoFactory.create_posicao_dao()
+    posicao_dao.criar_posicao(carteira_id, valor_compra_dolar, moeda.id, valor_compra_moeda)
+    print("\nPosição criada !!")
+
+def obter_valor_compra_moeda():
+    while True:
+        try:
+            entrada = input("\nDigite o valor total da compra da moeda: ").replace(',', '.')
+            valor = float(entrada)
+            if valor <= 0:
+                raise ValueError
+            return valor
+        except ValueError:
+            print("\nValor inválido. Tente novamente.")
+
+
+def obter_moeda(dao):
+    moeda = None
+    while True:
+        try:
+            id_moeda = int(input("\nDigite o ID da moeda: "))
+            moeda = dao.achar_moeda_id(id_moeda)
+            if moeda == None:
+                raise ValueError("\nID inválido. Tente novamente.")
+            return moeda
+        except ValueError:
+            print("\nInput inválido. Tente novamente.")
 
 def obter_valor_compra_dolar():
     while True:
