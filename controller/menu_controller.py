@@ -17,11 +17,8 @@ def iniciar_programa():
 
 def menu():
     print("\n[0] - Sair")
-    print("[1] - Depositar ou retirar fundos")
-    print("[2] - Cadastrar nova moeda cripto ")
-    print("[3] - Criar posição")
-    print("[4] - Encerrar posição")
-    print("[5] - Mostrar carteira")
+    print("[1] - Cadastrar nova moeda cripto ")
+    print("[2] - Mostrar carteira")
 
 def obter_op_menu():
     while True:
@@ -36,13 +33,13 @@ def validar_op(op):
     if not op:
         raise ValueError("Input em branco. Tente novamente.")
     int_op = int(op)
-    if int_op not in [0,1,2,3]:
+    if int_op not in [0,1,2,3,4]:
         raise ValueError("Opção inválida. Tente novamente.")
 
 def executar_op(op: int):
     if op == 1:
         cadastrar_moeda_cripto()
-    elif op == 3:
+    elif op == 2:
         criar_posicao()
 
 def buscar_cotacao_usd_brl():
