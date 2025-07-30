@@ -2,6 +2,9 @@ from controller.cadastrar_moeda_cripto_controller import cadastrar_moeda_cripto
 from controller.criar_posicao_controller import criar_posicao
 import requests
 
+from controller.mostrar_carteira_controller import mostrar_carteira
+
+
 def iniciar_programa():
 
     cotacao_usd_brl = buscar_cotacao_usd_brl()
@@ -40,7 +43,7 @@ def executar_op(op: int):
     if op == 1:
         cadastrar_moeda_cripto()
     elif op == 2:
-        criar_posicao()
+        mostrar_carteira()
 
 def buscar_cotacao_usd_brl():
     url = "https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=brl"

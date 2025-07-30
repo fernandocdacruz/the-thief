@@ -6,5 +6,11 @@ def mostrar_carteira():
     if len(posicoes) == 0:
         print("\nNão há nenhuma posição na sua carteira ainda.")
     else:
+        print()
         for posicao in posicoes:
+            print(posicao.resumo())
 
+    mostrar_menu()
+
+def mostrar_menu():
+    print
